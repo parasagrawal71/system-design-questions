@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/parasagrawal71/system-design-questions#readme",
   "devDependencies": {
-    "@types/node": "^20.4.2"
+    "@types/node": "^20.4.2",
+    "@types/readline-sync": "^1.4.4"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
   }
 }
