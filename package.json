@@ -1,0 +1,24 @@
+{
+  "name": "system-design-questions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "bookmyshow": "node dist/bookmyshow/Driver.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parasagrawal71/system-design-questions.git"
+  },
+  "author": "Paras Agrawal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parasagrawal71/system-design-questions/issues"
+  },
+  "homepage": "https://github.com/parasagrawal71/system-design-questions#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.2"
+  }
+}
