@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier -w ./",
     "compile": "tsc",
     "bookmyshow": "node dist/bookmyshow/Driver.js"
   },
@@ -20,9 +21,12 @@
   "homepage": "https://github.com/parasagrawal71/system-design-questions#readme",
   "devDependencies": {
     "@types/node": "^20.4.2",
-    "@types/readline-sync": "^1.4.4"
+    "@types/readline-sync": "^1.4.4",
+    "@types/uuid": "^9.0.2"
   },
   "dependencies": {
-    "readline-sync": "^1.4.10"
+    "prettier": "^3.0.0",
+    "readline-sync": "^1.4.10",
+    "uuid": "^9.0.0"
   }
 }
