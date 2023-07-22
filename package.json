@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier -w ./",
     "compile": "tsc",
-    "bookmyshow": "node dist/bookmyshow/Driver.js"
+    "bookmyshow": "tsc && node dist/bookmyshow/Driver.js"
   },
   "repository": {
     "type": "git",
