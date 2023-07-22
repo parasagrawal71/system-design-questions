@@ -1,11 +1,11 @@
 class Seat {
   private _id: string;
-  private row: string;
+  private _row: string;
   private _seatNo: number;
 
   constructor(id: string, row: string, seatNo: number) {
     this._id = id;
-    this.row = row;
+    this._row = row;
     this._seatNo = seatNo;
   }
 
@@ -14,7 +14,7 @@ class Seat {
   }
 
   getRow(): string {
-    return this.row;
+    return this._row;
   }
 
   getSeatNo(): number {
