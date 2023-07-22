@@ -9,9 +9,9 @@ class Show {
   private _movie: Movie;
   private _theatre: Theatre;
 
-  constructor(id: string, startTime: string, screen: Screen, movie: Movie, theatre: Theatre) {
+  constructor(id: string, showTime: string, screen: Screen, movie: Movie, theatre: Theatre) {
     this._id = id;
-    this._showTime = startTime;
+    this._showTime = showTime;
     this._screen = screen;
     this._movie = movie;
     this._theatre = theatre;
