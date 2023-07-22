@@ -15,7 +15,7 @@ class BookingService {
 
   createBooking(user: string, show: Show, seats: Array<Seat>): Booking {
     // Check if any seat is already booked, throw an exception
-    if (!this.isAnySeatAlreadyBooked(show, seats)) {
+    if (this.isAnySeatAlreadyBooked(show, seats)) {
       throw new Error("Seat(s) are already booked");
     }
 

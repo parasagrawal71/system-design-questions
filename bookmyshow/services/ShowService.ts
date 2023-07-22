@@ -13,7 +13,7 @@ class ShowService {
 
   createShow(showTime: string, screen: Screen, movie: Movie, theatre: Theatre): Show {
     // Validation: Check if screen is free at the given time slot
-    if (!this.checkIfScreenIsFree(screen, movie, theatre)) {
+    if (!this.checkIfScreenIsFree(showTime, screen, movie, theatre)) {
       throw new Error("Screen is already booked for another show");
     }
 
@@ -39,17 +39,19 @@ class ShowService {
     return shows;
   }
 
-  checkIfScreenIsFree(screen: Screen, movie: Movie, theatre: Theatre): boolean {
-    return Object.values(this._shows).some((show: Show) => {
+  checkIfScreenIsFree(showTime: string, screen: Screen, movie: Movie, theatre: Theatre): boolean {
+    const isShowExists = Object.values(this._shows).some((show: Show) => {
       if (
+        show.getShowTime() === showTime &&
         show.getScreen().getId() === screen.getId() &&
         show.getTheatre().getId() === theatre.getId() &&
         show.getMovie().getId() === movie.getId()
       ) {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     });
+    return !isShowExists;
   }
 }
 

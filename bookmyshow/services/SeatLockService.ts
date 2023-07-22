@@ -29,7 +29,7 @@ class SeatLockService {
   }
 
   getSeatLocksForShow(show: Show): SeatLock[] {
-    return this._seatLocks[show.getId()];
+    return this._seatLocks[show.getId()] || [];
   }
 }
 
