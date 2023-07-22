@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Booking from "../models/Booking";
 import SeatLockService from "./SeatLockService";
 

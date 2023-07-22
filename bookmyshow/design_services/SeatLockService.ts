@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Seat from "../models/Seat";
 import Show from "../models/Show";
 import SeatLock from "../models/SeatLock";

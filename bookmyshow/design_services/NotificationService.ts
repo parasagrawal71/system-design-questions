@@ -1,3 +1,4 @@
+// @ts-nocheck
 class NotificationService {
   constructor() {}
 

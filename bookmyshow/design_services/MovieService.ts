@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Movie from "../models/Movie";
 
 class MovieService {

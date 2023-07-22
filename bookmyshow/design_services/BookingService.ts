@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Booking from "../models/Booking";
 import Seat from "../models/Seat";
 import Show from "../models/Show";

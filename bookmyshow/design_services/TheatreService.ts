@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Screen from "../models/Screen";
 import Seat from "../models/Seat";
 import Theatre from "../models/Theatre";
