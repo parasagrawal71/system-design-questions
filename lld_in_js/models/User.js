@@ -1,16 +1,16 @@
 class User {
-  _id = "";
+  #_id = "";
   _name = "";
   _email = "";
 
   constructor(id, name, email) {
-    this._id = id;
+    this.#_id = id;
     this._name = name;
     this._email = email;
   }
 
   getId() {
-    this._id;
+    this.#_id;
   }
 
   getName() {
