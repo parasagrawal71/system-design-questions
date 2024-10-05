@@ -1,9 +1,9 @@
-import { DriveStrategy } from "./Strategy/DriveStrategy";
+import { IDriveStrategy } from "./Strategy/DriveStrategy";
 
 export class Vehicle {
-  driveObject: DriveStrategy;
+  driveObject: IDriveStrategy;
 
-  constructor(driveObj: DriveStrategy) {
+  constructor(driveObj: IDriveStrategy) {
     this.driveObject = driveObj;
   }
   drive() {

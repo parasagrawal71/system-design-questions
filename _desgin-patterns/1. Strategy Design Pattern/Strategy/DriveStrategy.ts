@@ -1,3 +1,3 @@
-export interface DriveStrategy {
+export interface IDriveStrategy {
   drive(): void;
 }
