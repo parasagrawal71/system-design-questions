@@ -1,4 +1,4 @@
-import { IDriveStrategy } from "./Strategy/DriveStrategy";
+import { IDriveStrategy } from "./Strategy/IDriveStrategy";
 
 export class Vehicle {
   driveObject: IDriveStrategy;

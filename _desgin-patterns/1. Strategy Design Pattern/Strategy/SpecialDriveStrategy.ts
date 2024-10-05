@@ -1,4 +1,4 @@
-import { IDriveStrategy } from "./DriveStrategy";
+import { IDriveStrategy } from "./IDriveStrategy";
 
 export class SpecialDriveStrategy implements IDriveStrategy {
   drive(): void {
