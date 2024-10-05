@@ -26,7 +26,7 @@ export class IphoneObservable implements IStocksObservable {
     if (this.stockCount === 0) {
       this.notify();
     }
-    this.stockCount += data;
+    this.stockCount = data;
   }
 
   public getStockCount(): number {
