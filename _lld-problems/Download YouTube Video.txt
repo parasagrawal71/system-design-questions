@@ -1,0 +1,22 @@
+****************************************
+Download YouTube Video
+****************************************
+brew install yt-dlp
+brew install ffmpeg (Mandatory for good quality)
+
+yt-dlp --cookies cookies.txt --cookies-from-browser chrome
+
+yt-dlp --cookies cookies.txt "YT_VIDEO_URL"
+
+Reference:
+https://www.reddit.com/r/youtubedl/wiki/cookies/
+
+
+
+****************************************
+Other Commands or tags
+****************************************
+-> --yes-playlist (Haven't tried yet)
+-> Best mp4 quality ==> -S ext:mp4:m4a
+-> 720p mp4 ==> yt-dlp -S res:720,ext:mp4:m4a --cookies cookies.txt "YT_VIDEO_URL"
+-> Docs ==> https://github.com/yt-dlp/yt-dlp
