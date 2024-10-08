@@ -70,7 +70,7 @@ function entranceGate(
   ticketManager: TicketManager,
 ) {
   // Incoming four wheeler
-  const spot: ParkingSpot | null = fourWheelerManager.getAvailableSpot();
+  const spot: ParkingSpot | null = fourWheelerManager.getAvailableSpot(); // Pass entranceGateNo for parking strategy if required
   if (!spot) {
     console.log("\nSorry, parking space is not available for 4 Wheeler");
   } else {
@@ -85,7 +85,7 @@ function entranceGate(
   }
 
   // Incoming two wheeler
-  const spot2W: ParkingSpot | null = twoWheelerManager.getAvailableSpot();
+  const spot2W: ParkingSpot | null = twoWheelerManager.getAvailableSpot(); // Pass entranceGateNo for parking strategy if required
   if (!spot2W) {
     console.log("\nSorry, parking space is not available for 2 Wheeler");
   } else {
