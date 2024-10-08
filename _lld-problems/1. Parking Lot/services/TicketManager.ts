@@ -5,8 +5,8 @@ import { Vehicle } from "../models/Vehicle";
 export class TicketManager {
   private _tickets: Ticket[] = [];
 
-  public createTicket(entryTime: Date, parkingSpot: ParkingSpot, vehicle: Vehicle): Ticket {
-    const ticket = new Ticket(entryTime, parkingSpot, vehicle);
+  public createTicket(parkingSpot: ParkingSpot, vehicle: Vehicle): Ticket {
+    const ticket = new Ticket(new Date(), parkingSpot, vehicle);
     this._tickets.push(ticket);
     return ticket;
   }

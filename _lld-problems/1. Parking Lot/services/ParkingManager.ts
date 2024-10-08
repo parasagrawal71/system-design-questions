@@ -11,7 +11,7 @@ export class ParkingManager {
     this._parkingStrategy = parkingStrategy;
   }
 
-  public addParkingSpot(spot: ParkingSpot) {
+  public addParkingSpot(spot: ParkingSpot): void {
     this._spots.push(spot);
   }
 
@@ -19,7 +19,7 @@ export class ParkingManager {
     return this._spots;
   }
 
-  public removeParkingSpot(spot: ParkingSpot) {
+  public removeParkingSpot(spot: ParkingSpot): void {
     this._spots = this._spots.filter((s) => s.id !== spot.id);
   }
 

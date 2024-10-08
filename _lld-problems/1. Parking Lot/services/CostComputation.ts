@@ -2,13 +2,13 @@ import { Ticket } from "../models/Ticket";
 import { IPricingStrategy } from "../strategy/IPricingStrategy";
 
 export class CostComputation {
-  strategy: IPricingStrategy;
+  private _strategy: IPricingStrategy;
 
   constructor(strategy: IPricingStrategy) {
-    this.strategy = strategy;
+    this._strategy = strategy;
   }
 
   computePrice(ticket: Ticket): number {
-    return this.strategy.calculatePrice(ticket);
+    return this._strategy.calculatePrice(ticket);
   }
 }

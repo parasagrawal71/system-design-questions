@@ -80,7 +80,7 @@ function entranceGate(
     console.log("\nVehicle is parked at spot ", spot.id);
 
     // Generate a ticket
-    ticketManager.createTicket(new Date(), spot, vehicle);
+    ticketManager.createTicket(spot, vehicle);
     console.log("Ticket is created for ", vehicle.vehicleNo);
   }
 
@@ -95,7 +95,7 @@ function entranceGate(
     console.log("\nVehicle is parked at spot ", spot2W.id);
 
     // Generate a ticket
-    ticketManager.createTicket(new Date(), spot2W, vehicle);
+    ticketManager.createTicket(spot2W, vehicle);
     console.log("Ticket is created for ", vehicle.vehicleNo);
   }
 
