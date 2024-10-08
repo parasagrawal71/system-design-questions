@@ -6,7 +6,7 @@ import { TwoWheelerSpot } from "./models/TwoWheelerSpot";
 import { Vehicle } from "./models/Vehicle";
 import { CostComputationFactory } from "./services/CostComputationFactory";
 import { ParkingManagerFactory } from "./services/ParkingManagerFactory";
-import { ParkingSpotManager } from "./services/ParkingSpotManager";
+import { ParkingManager } from "./services/ParkingManager";
 import { TicketManager } from "./services/TicketManager";
 
 (function () {
@@ -25,8 +25,8 @@ import { TicketManager } from "./services/TicketManager";
   // Reference: https://www.typescripttutorial.net/typescript-tutorial/typescript-getters-setters/
 
   const pmFactory = new ParkingManagerFactory();
-  const fourWheelerManager: ParkingSpotManager = pmFactory.getManager(VEHICLE_TYPE.FOUR_WHEELER);
-  const twoWheelerManager: ParkingSpotManager = pmFactory.getManager(VEHICLE_TYPE.TWO_WHEELER);
+  const fourWheelerManager: ParkingManager = pmFactory.getManager(VEHICLE_TYPE.FOUR_WHEELER);
+  const twoWheelerManager: ParkingManager = pmFactory.getManager(VEHICLE_TYPE.TWO_WHEELER);
   const ticketManager: TicketManager = new TicketManager();
 
   console.log("\n**************** Admin Config ****************");
@@ -41,7 +41,7 @@ import { TicketManager } from "./services/TicketManager";
   console.log("\nThank you for using our parking service");
 })();
 
-function init(fourWheelerManager: ParkingSpotManager, twoWheelerManager: ParkingSpotManager) {
+function init(fourWheelerManager: ParkingManager, twoWheelerManager: ParkingManager) {
   /**
    * - Add total 10 parking spaces - 6 for 4W and 4 for 2W
    */
@@ -65,8 +65,8 @@ function init(fourWheelerManager: ParkingSpotManager, twoWheelerManager: Parking
 }
 
 function entranceGate(
-  fourWheelerManager: ParkingSpotManager,
-  twoWheelerManager: ParkingSpotManager,
+  fourWheelerManager: ParkingManager,
+  twoWheelerManager: ParkingManager,
   ticketManager: TicketManager,
 ) {
   // Incoming four wheeler
@@ -102,11 +102,7 @@ function entranceGate(
   // console.log(ticketManager.getTickets());
 }
 
-function exitGate(
-  fourWheelerManager: ParkingSpotManager,
-  twoWheelerManager: ParkingSpotManager,
-  ticketManager: TicketManager,
-) {
+function exitGate(fourWheelerManager: ParkingManager, twoWheelerManager: ParkingManager, ticketManager: TicketManager) {
   const vehicle = new Vehicle("4W_1", VEHICLE_TYPE.FOUR_WHEELER);
 
   // Find ticket

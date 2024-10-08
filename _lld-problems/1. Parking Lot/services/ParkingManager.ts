@@ -2,7 +2,7 @@ import { ParkingSpot } from "../models/ParkingSpot";
 import { Vehicle } from "../models/Vehicle";
 import { ParkingStrategy } from "../strategy/ParkingStrategy";
 
-export class ParkingSpotManager {
+export class ParkingManager {
   private _spots: ParkingSpot[] = [];
   private _parkingStrategy: ParkingStrategy;
 
