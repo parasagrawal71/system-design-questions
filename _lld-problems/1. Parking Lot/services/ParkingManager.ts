@@ -23,7 +23,6 @@ export class ParkingManager {
     this._spots = this._spots.filter((s) => s.id !== spot.id);
   }
 
-  // Default: Returns the first available spot
   public getAvailableSpot(): ParkingSpot | null {
     return this._parkingStrategy.findFreeSpot(this._spots);
   }
