@@ -5,7 +5,7 @@ import { CostComputationFactory } from "../services/CostComputationFactory";
 import { ParkingManager } from "../services/ParkingManager";
 import { TicketManager } from "../services/TicketManager";
 
-export class ExitGate {
+export class ExitGateController {
   private _fourWheelerManager: ParkingManager;
   private _twoWheelerManager: ParkingManager;
   private _ticketManager: TicketManager;

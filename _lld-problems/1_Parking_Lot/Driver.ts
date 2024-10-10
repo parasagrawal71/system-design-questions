@@ -1,7 +1,11 @@
 import { VEHICLE_TYPE } from "./constants/constants";
-import { EntranceGate } from "./controllers/EntranceGate";
-import { ExitGate } from "./controllers/ExitGate";
+import { EntranceGateController } from "./controllers/EntranceGateController";
+import { ExitGateController } from "./controllers/ExitGateController";
 import { Init } from "./controllers/Init";
+import { EntryPoint } from "./models/EntryPoint";
+import { ExitPoint } from "./models/ExitPoint";
+import { EntryPointManager } from "./services/EntryPointManager";
+import { ExitPointManager } from "./services/ExitPointManager";
 import { ParkingManager } from "./services/ParkingManager";
 import { ParkingManagerFactory } from "./services/ParkingManagerFactory";
 import { TicketManager } from "./services/TicketManager";
@@ -25,10 +29,12 @@ import { TicketManager } from "./services/TicketManager";
   const fourWheelerManager: ParkingManager = pmFactory.getManager(VEHICLE_TYPE.FOUR_WHEELER);
   const twoWheelerManager: ParkingManager = pmFactory.getManager(VEHICLE_TYPE.TWO_WHEELER);
   const ticketManager: TicketManager = new TicketManager();
+  const entryPointManager = new EntryPointManager([]);
+  const exitPointManager = new ExitPointManager([]);
 
-  new Init(fourWheelerManager, twoWheelerManager);
+  new Init(fourWheelerManager, twoWheelerManager, entryPointManager, exitPointManager);
 
-  new EntranceGate(fourWheelerManager, twoWheelerManager, ticketManager);
+  new EntranceGateController(fourWheelerManager, twoWheelerManager, ticketManager, entryPointManager);
 
-  new ExitGate(fourWheelerManager, twoWheelerManager, ticketManager);
+  new ExitGateController(fourWheelerManager, twoWheelerManager, ticketManager);
 })();

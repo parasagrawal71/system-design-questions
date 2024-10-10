@@ -1,9 +1,9 @@
 import { ParkingSpot } from "../models/ParkingSpot";
-import { NearToExitStrategy } from "../strategy/NearToExitStrategy";
+import { NearToEntraceStrategy } from "../strategy/NearToEntraceStrategy";
 import { ParkingManager } from "./ParkingManager";
 
 export class TwoWheelerManager extends ParkingManager {
   constructor(spots: ParkingSpot[]) {
-    super(spots, new NearToExitStrategy());
+    super(spots, new NearToEntraceStrategy());
   }
 }

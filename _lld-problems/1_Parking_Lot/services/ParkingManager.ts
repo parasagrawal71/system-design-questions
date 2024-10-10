@@ -1,3 +1,4 @@
+import { EntryPoint } from "../models/EntryPoint";
 import { ParkingSpot } from "../models/ParkingSpot";
 import { Vehicle } from "../models/Vehicle";
 import { ParkingStrategy } from "../strategy/ParkingStrategy";
@@ -23,8 +24,8 @@ export class ParkingManager {
     this._spots = this._spots.filter((s) => s.id !== spot.id);
   }
 
-  public getAvailableSpot(): ParkingSpot | null {
-    return this._parkingStrategy.findFreeSpot(this._spots);
+  public getAvailableSpot(entryPoint: EntryPoint): ParkingSpot | null {
+    return this._parkingStrategy.findFreeSpot(this._spots, entryPoint);
   }
 
   public parkVehicle(spot: ParkingSpot, vehicle: Vehicle) {
