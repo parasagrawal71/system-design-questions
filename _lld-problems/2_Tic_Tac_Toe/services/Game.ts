@@ -28,7 +28,7 @@ export class Game {
     this._players.push(player2);
   }
 
-  startGame(): void {
+  startGame(): string {
     let noWinner = true;
     while (noWinner) {
       // Pop the player whose turn it is (From the beginning)
