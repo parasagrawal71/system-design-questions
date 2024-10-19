@@ -9,6 +9,7 @@ export class ExternalDispatcher {
     for (const elevatorController of this.elevatorControllers) {
       const elevatorId = elevatorController.elevator.elevatorId;
 
+      // For simplicity, odd-even strategy
       if (isOdd(elevatorId) && isOdd(floorNo)) {
         elevatorController.submitExternalRequest(floorNo, dir);
         break;
@@ -16,6 +17,12 @@ export class ExternalDispatcher {
         elevatorController.submitExternalRequest(floorNo, dir);
         break;
       }
+
+      /**
+       * TODO:
+       * - Can Strategy Design Pattern be used here?
+       * - Optimise the algorithm. Select idle elevator?, etc
+       */
     }
   }
 }
