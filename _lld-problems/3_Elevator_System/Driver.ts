@@ -6,7 +6,7 @@ import { InternalButtons } from "./models/InternalButtons";
 import { ElevatorController } from "./services/ElevatorController";
 import { ElevatorCreator } from "./services/ElevatorCreator";
 
-(function () {
+(async function () {
   // Create a building with floors
   const building = new Building([]);
   for (let i = 1; i <= NUM_OF_FLOORS; i++) {
@@ -26,9 +26,13 @@ import { ElevatorCreator } from "./services/ElevatorCreator";
   console.log(`\n`);
   const externalButtons = new ExternalButtons();
   externalButtons.pressButton(2, Direction.UP);
-  //   externalButtons.pressButton(4, Direction.UP);
+  externalButtons.pressButton(8, Direction.UP);
+  // await new Promise((r) => setTimeout(r, 200));
+  externalButtons.pressButton(6, Direction.UP);
+  externalButtons.pressButton(2, Direction.DOWN);
+  externalButtons.pressButton(4, Direction.DOWN);
 
   // User requests to go UP from floor 2 to floor 5
-  const internalButtons = new InternalButtons();
-  internalButtons.pressButton(5, elevatorControllers[1].elevator);
+  // const internalButtons = new InternalButtons();
+  // internalButtons.pressButton(5, elevatorControllers[1].elevator);
 })();

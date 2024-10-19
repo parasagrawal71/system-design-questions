@@ -58,17 +58,17 @@ export class ElevatorCar {
   }
 
   public moveElevator(destFloor: number, dir: Direction): boolean {
+    console.log("\n");
+    this.showDisplay();
+    this.status = Status.MOVING;
     let startFloor = this._currentFloor;
 
     if (dir === Direction.UP) {
-      console.log("\n");
       for (let i = startFloor; i <= destFloor; i++) {
         this._currentFloor = i;
-        this._dir = Direction.UP;
 
         this.setDisplay();
         this.showDisplay();
-        this.status = Status.MOVING;
       }
       this.status = Status.IDLE;
       this.showDisplay();
@@ -78,14 +78,11 @@ export class ElevatorCar {
     }
 
     if (dir === Direction.DOWN) {
-      console.log("\n");
       for (let i = startFloor; i >= destFloor; i--) {
         this._currentFloor = i;
-        this._dir = Direction.DOWN;
 
         this.setDisplay();
         this.showDisplay();
-        this.status = Status.MOVING;
       }
       this.status = Status.IDLE;
       this.showDisplay();
