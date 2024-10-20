@@ -1,0 +1,13 @@
+
+Dotted Line with an open v-shaped arrow tip
+---
+- A dotted line with an open v-shaped arrow tip denotes the "uses" relationship or dependency
+
+
+Line with a Diamond shape
+---
+- In a UML class diagram, a line with a diamond shape indicates an aggregation or composition relationship between two or more classes: 
+    Aggregation
+    - A diamond shape on the aggregate class indicates that the aggregate class owns the parts. The line connects the aggregate class to the parts. This relationship models a "has-a" relationship. For example, a library is made up of books, so the library is the aggregate class and the books are the parts. 
+    Composition
+    - A filled diamond on the association end of a solid line indicates a composition relationship. Composition is a special type of aggregation where the parts are destroyed when the whole is destroyed. For example, objects of Class2 live and die with Class1.
