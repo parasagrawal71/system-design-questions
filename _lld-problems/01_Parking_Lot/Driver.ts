@@ -38,3 +38,9 @@ import { TicketManager } from "./services/TicketManager";
 
   new ExitGateController(fourWheelerManager, twoWheelerManager, ticketManager);
 })();
+
+// Parking Lot
+// ----
+// Multiple entrances
+// Multiple exits
+// Multi-level
