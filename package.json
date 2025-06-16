@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier -w ./",
     "compile": "tsc",
-    "bookmyshow": "tsc && node dist/bookmyshow/Driver.js"
+    "bookmyshow:old": "tsc && node dist/others/bookmyshow/Driver.js",
+    "bookmyshow": "ts-node-dev others/bookmyshow/Driver.ts"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
   "devDependencies": {
     "@types/node": "^20.4.2",
     "@types/readline-sync": "^1.4.4",
-    "@types/uuid": "^9.0.2"
+    "@types/uuid": "^9.0.2",
+    "ts-node-dev": "^2.0.0"
   },
   "dependencies": {
     "@datastructures-js/priority-queue": "^6.3.1",
