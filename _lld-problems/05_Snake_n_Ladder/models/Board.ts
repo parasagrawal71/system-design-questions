@@ -24,8 +24,8 @@ export class Board {
 
   addSnakesNLadders(boardSize: number, numOfSnakes: number, numOfLadders: number) {
     while (numOfSnakes > 0) {
-      const snakeHead = Math.floor(Math.random() * boardSize * boardSize - 1);
-      const snakeTail = Math.floor(Math.random() * boardSize * boardSize - 1);
+      const snakeHead = Math.floor(Math.random() * (boardSize * boardSize - 1)); // IMPORTANT: bracket around (boardSize * boardSize - 1) is needed to get a number ranging from 0 to 99
+      const snakeTail = Math.floor(Math.random() * (boardSize * boardSize - 1));
       if (snakeTail >= snakeHead) {
         continue;
       }
@@ -38,8 +38,8 @@ export class Board {
     }
 
     while (numOfLadders > 0) {
-      const ladderStart = Math.floor(Math.random() * boardSize * boardSize - 1);
-      const ladderEnd = Math.floor(Math.random() * boardSize * boardSize - 1);
+      const ladderStart = Math.floor(Math.random() * (boardSize * boardSize - 1));
+      const ladderEnd = Math.floor(Math.random() * (boardSize * boardSize - 1));
       if (ladderStart >= ladderEnd) {
         continue;
       }

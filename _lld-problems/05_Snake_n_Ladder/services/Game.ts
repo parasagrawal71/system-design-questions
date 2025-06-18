@@ -30,6 +30,9 @@ export class Game {
       // Roll the dice
       const diceValue = this.dice.rollDice();
       console.log(`Dice rolled: ${diceValue}`);
+      if (diceValue === 0) {
+        continue;
+      }
 
       // Move the player
       let playerNewPosition = player.currentPosition + diceValue;
