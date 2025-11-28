@@ -1,6 +1,5 @@
 import { Email } from "./Email";
-import { EmailBuilder } from "./EmailBuilder"
-
+import { EmailBuilder } from "./EmailBuilder";
 
 /**
     Reference: https://www.youtube.com/watch?v=xmfhM2I-dtE (~15 mins)
