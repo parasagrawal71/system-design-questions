@@ -23,6 +23,7 @@ import { EmailBuilder } from "./EmailBuilder";
  */
 
 (function main() {
+  // TARGET: To create an immutable object, email. (object without setters)
   const emailBuilder = new EmailBuilder();
   const email: Email = emailBuilder
     .setTo("paras@gmail.com")
