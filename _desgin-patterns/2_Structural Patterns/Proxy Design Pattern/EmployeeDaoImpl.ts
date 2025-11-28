@@ -1,7 +1,7 @@
 import { Employee } from "./Employee";
-import { EmployeeDao } from "./EmployeeDao";
+import { IEmployeeDao } from "./IEmployeeDao";
 
-export class EmployeeDaoImpl implements EmployeeDao {
+export class EmployeeDaoImpl implements IEmployeeDao {
   create(client: string, employee: Employee): void {
     console.log(`Employee created: ${employee.name}`);
   }
