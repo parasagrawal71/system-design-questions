@@ -1,6 +1,6 @@
-import { InterviewProcess } from "./InterviewProcess"
+import { InterviewProcess } from "./InterviewProcess";
 
-(function main(){
-    const interviewProcess: InterviewProcess = new InterviewProcess();
-    interviewProcess.start("Paras");
-})()
+(function main() {
+  const interviewProcess: InterviewProcess = new InterviewProcess();
+  interviewProcess.start("Paras");
+})();

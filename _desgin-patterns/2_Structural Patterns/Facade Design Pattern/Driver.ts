@@ -26,8 +26,8 @@ import { BankFacade } from "./BankFacade";
     - You want your code to be clean, maintainable, and easy to understand.
  */
 
-(function main(){
+(function main() {
   // Facade Pattern
   const bank: BankFacade = new BankFacade();
   bank.withdraw("ACC7654", 1000, "1234");
-})()
+})();
