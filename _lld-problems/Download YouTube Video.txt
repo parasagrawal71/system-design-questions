@@ -20,3 +20,10 @@ Other Commands or tags
 -> Best mp4 quality ==> -S ext:mp4:m4a
 -> 720p mp4 ==> yt-dlp -S res:720,ext:mp4:m4a --cookies cookies.txt "YT_VIDEO_URL"
 -> Docs ==> https://github.com/yt-dlp/yt-dlp
+
+
+
+****************************************
+Websites:
+****************************************
+- Website to download a video (shows video size): https://ssyoutube.online/en2/
