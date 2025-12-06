@@ -1,7 +1,10 @@
+import * as fs from "fs";
+import { Mutex } from "async-mutex";
 import { ILogFormatter } from "../formatter/ILogFormatter";
 import { LogMessage } from "../model/LogMessage";
 import { ILogAppender } from "./ILogAppender";
-import * as fs from "fs";
+
+const mutex = new Mutex();
 
 export class FileAppender implements ILogAppender {
   fileName: string = "";
@@ -13,8 +16,15 @@ export class FileAppender implements ILogAppender {
     this.fileName = fileName;
   }
 
-  append(message: LogMessage): void {
-    const formattedMsg = this.formatter.format(message);
-    fs.writeFileSync(this.fileName, formattedMsg);
+  async append(message: LogMessage): Promise<void> {
+    const release = await mutex.acquire();
+
+    try {
+      const formattedMsg = this.formatter.format(message);
+      fs.appendFileSync(this.fileName, formattedMsg); // ** appendFile instead of writeFile
+      fs.appendFileSync(this.fileName, "\n");
+    } finally {
+      release();
+    }
   }
 }

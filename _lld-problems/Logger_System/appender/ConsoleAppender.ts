@@ -5,7 +5,7 @@ import { ILogAppender } from "./ILogAppender";
 export class ConsoleAppender implements ILogAppender {
   constructor(private readonly formatter: ILogFormatter) {}
 
-  append(message: LogMessage): void {
+  async append(message: LogMessage): Promise<void> {
     console.log(this.formatter.format(message));
   }
 }
