@@ -1,5 +1,6 @@
 import { BidStatus } from "../enum/BidStatus";
 import { Auction } from "../model/Auction";
+import { Bid } from "../model/Bid";
 import { AuctionRepository } from "../repository/AuctionRepository";
 import { BidRepository } from "../repository/BidRepository";
 import { SellerRepository } from "../repository/SellerRepository";
@@ -37,7 +38,7 @@ export class AuctionService {
     this.auctionRepository.save(auction);
   }
 
-  closeAuction(auctionId: string): void {
+  closeAuction(auctionId: string): Bid {
     const auction = this.auctionRepository.getById(auctionId);
     if (!auction) {
       throw new Error("Auction does not exist");
@@ -48,17 +49,19 @@ export class AuctionService {
     if (bids.length === 0) {
       throw new Error("No bids found");
     }
-    const winnerBid = this.winningStrategy.findWinner(bids);
-    this.bidRepository.updateStatus(winnerBid.getId(), BidStatus.WON);
+    const winningBid = this.winningStrategy.findWinner(bids);
+    this.bidRepository.updateStatus(winningBid.getId(), BidStatus.WON);
 
     // Mark other bids as Lost
     bids.forEach((bid) => {
-      if (bid.getStatus() === BidStatus.CREATED && bid.getId() !== winnerBid.getId()) {
+      if (bid.getStatus() === BidStatus.CREATED && bid.getId() !== winningBid.getId()) {
         this.bidRepository.updateStatus(bid.getId(), BidStatus.LOST);
       }
     });
 
     this.auctionRepository.setInActive(auction.getId());
+
+    return winningBid;
   }
 
   displayAuction(auctionId: string): void {

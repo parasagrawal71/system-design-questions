@@ -73,7 +73,8 @@ import { HighestUniqueWinningStrategy } from "./strategy/HighestUniqueWinningStr
 
   // Close Auction
   console.log(`CLOSE BID ACTION: `);
-  auctionService.closeAuction("auction_1");
+  const winningBid: Bid = auctionService.closeAuction("auction_1");
+  console.log(`The winner is ${winningBid.getBuyerId()}`);
 
   // Display Auction
   auctionService.displayAuction("auction_1");
