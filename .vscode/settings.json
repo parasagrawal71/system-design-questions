@@ -1,0 +1,29 @@
+{
+  // Prettier as default formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // Run import fixes BEFORE formatting
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit"
+  },
+
+  // Only apply TypeScript/JavaScript import actions
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.addMissingImports": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.addMissingImports": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  // Prevent conflicts with Prettier
+  "javascript.format.enable": false,
+  "typescript.format.enable": false
+}
