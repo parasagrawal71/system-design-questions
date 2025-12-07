@@ -48,7 +48,7 @@ export class BidService {
     return Array.from(this.bidRepository.getAllBids());
   }
 
-  updateBid(bidId: string, bidValue: number): void {
+  updateBid(bidId: string, newBidValue: number): void {
     const bid = this.bidRepository.getById(bidId);
     if (!bid) {
       throw new Error("Bid does not exist");
@@ -57,7 +57,14 @@ export class BidService {
     if (!auction?.getIsActive()) {
       throw new Error("Auction is closed");
     }
-    const bidToUpdate = new Bid(bidId, bid.getAuctionId(), bid.getBuyerId(), bidValue);
+    if (newBidValue < auction.getMinValue()) {
+      throw new Error("Bid value cannot be less than min value");
+    }
+
+    if (newBidValue > auction.getMaxValue()) {
+      throw new Error("Bid value cannot be greater than max value");
+    }
+    const bidToUpdate = new Bid(bidId, bid.getAuctionId(), bid.getBuyerId(), newBidValue);
 
     this.bidRepository.update(bidId, bidToUpdate);
   }
