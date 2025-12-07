@@ -79,3 +79,17 @@ import { HighestUniqueWinningStrategy } from "./strategy/HighestUniqueWinningStr
   // Display Auction
   auctionService.displayAuction("auction_1");
 })();
+
+/**
+    Good-to-have features (Not coded yet but they are straight-forward):
+    ------
+    - Budget restriction and Update budget
+        (total/available budget at buyer level)
+    - Upgrade the buyer to a preferred buyer if he has participated in more 
+    than 2 auctions. And for choosing a winner, whenever there is a tie on 
+    the winning bid, preference should be given to the preferred buyer 
+    and if it’s tied between multiple preferred buyers, fallback to the 
+    next highest bid. The preferred buyer is across sellers on the platform.
+     (Compute buyer participation dynamically or pre-compute it at buyer level)
+
+ */
