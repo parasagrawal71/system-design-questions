@@ -1,9 +1,10 @@
 import { Mutex } from "async-mutex";
 import { RateLimitConfig } from "../models/RateLimitConfig";
-import { RateLimiter } from "./RateLimiter";
+import { IRateLimiter } from "./IRateLimiter";
 
-export class FixedWindow extends RateLimiter {
+export class FixedWindow extends IRateLimiter {
   private rateLimitConfig: RateLimitConfig;
+
   private requestCount: Map<string, number> = new Map(); // user id -> request count
   private windowStart: Map<string, number> = new Map(); // user id -> window start in ms
 

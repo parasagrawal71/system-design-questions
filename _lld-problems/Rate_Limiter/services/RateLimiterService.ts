@@ -2,10 +2,10 @@ import { RateLimitType, UserTier } from "../enums/enums";
 import { RateLimiterFactory } from "../factory/RateLimiterFactory";
 import { RateLimitConfig } from "../models/RateLimitConfig";
 import { User } from "../models/User";
-import { RateLimiter } from "./RateLimiter";
+import { IRateLimiter } from "./IRateLimiter";
 
 export class RateLimiterService {
-  private rateLimiters: Map<UserTier, RateLimiter> = new Map();
+  private rateLimiters: Map<UserTier, IRateLimiter> = new Map();
 
   constructor() {
     this.rateLimiters.set(

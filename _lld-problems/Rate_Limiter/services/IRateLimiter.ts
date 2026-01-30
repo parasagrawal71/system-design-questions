@@ -1,3 +1,3 @@
-export abstract class RateLimiter {
+export abstract class IRateLimiter {
   abstract allowRequest(userId: string): Promise<boolean>;
 }
