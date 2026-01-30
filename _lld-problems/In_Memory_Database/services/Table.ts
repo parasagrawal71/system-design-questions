@@ -1,18 +1,17 @@
-import { Row } from "../types/types";
+import { Row, RowId } from "../types/types";
 import { Column } from "./Column";
 import { Index } from "./Index";
 
 export class Table {
   private name: string;
   private columns: Column[];
-  private rows: Row[];
+  private rows: Map<RowId, Row> = new Map(); // rowId -> row
+  private nextRowId = 1;
   private indexes = new Map<string, Index>();
 
   constructor(name: string, columns: Column[]) {
     this.name = name;
     this.columns = columns;
-    this.rows = [];
-    this.indexes = new Map();
 
     // auto-create indexes if column is indexed
     for (const col of columns) {
@@ -28,30 +27,32 @@ export class Table {
       column.validate(row[column.getName()]);
     }
 
-    this.rows.push({ ...row });
+    this.rows.set(this.nextRowId, row);
 
     for (const index of this.indexes.values()) {
-      index.index(row);
+      index.index(row, this.nextRowId);
     }
+
+    this.nextRowId++;
   }
 
   delete(columnName: string, value: unknown) {
     // validations: check if column exists, check if value exists
 
-    this.rows = this.rows.filter((row) => {
+    this.rows.forEach((row, rowId) => {
       // Unindex the row
       if (row[columnName] === value) {
         for (const index of this.indexes.values()) {
-          index.unindex(row);
+          index.unindex(row, rowId);
         }
-      }
 
-      return row[columnName] !== value;
+        this.rows.delete(rowId);
+      }
     });
   }
 
   findAll(): Row[] {
-    return this.rows;
+    return Array.from(this.rows.values());
   }
 
   findBy(columnName: string, value: unknown): Row[] {
@@ -59,28 +60,30 @@ export class Table {
 
     // use index if available
     if (this.indexes.has(columnName)) {
-      return this.indexes.get(columnName)?.search(value) || [];
+      const rowIds = this.indexes.get(columnName)?.search(value);
+      return rowIds?.map((id) => this.rows.get(id) as Row).filter(Boolean) || [];
     }
 
     // fallback to full scan
-    return this.rows.filter((row) => row[columnName] === value) || [];
+    return Array.from(this.rows.values()).filter((row) => row[columnName] === value) || [];
   }
 
   update(columnName: string, value: unknown, newValue: unknown) {
     // validations: check if column exists, check if value exists
 
-    this.rows = this.rows.map((row) => {
+    this.rows.forEach((row, rowId) => {
       if (row[columnName] === value) {
         // Unindex the row
         for (const index of this.indexes.values()) {
-          index.unindex(row);
+          index.unindex(row, rowId);
         }
 
-        row[columnName] = newValue;
+        const newRow = { ...row, [columnName]: newValue };
+        this.rows.set(rowId, newRow);
 
         // Index the row
         for (const index of this.indexes.values()) {
-          index.index({ ...row });
+          index.index(newRow, rowId);
         }
       }
       return row;
@@ -96,7 +99,7 @@ export class Table {
     }
 
     const index = new Index(columnName);
-    this.rows.forEach((row) => index.index(row));
+    this.rows.forEach((row, rowId) => index.index(row, rowId));
     this.indexes.set(columnName, index);
   }
 
@@ -114,7 +117,7 @@ export class Table {
           flattenIndexes.push({
             index: indexKey,
             columnValue,
-            value: JSON.stringify(Array.from(index.getMap().get(columnValue) || [])),
+            value: Array.from(index.getMap().get(columnValue) || []).join(", "),
           });
         }
       }

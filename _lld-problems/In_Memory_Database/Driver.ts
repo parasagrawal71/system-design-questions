@@ -18,13 +18,14 @@ import { InMemoryDB } from "./services/InMemoryDB";
   usersTable.insert({ id: 2, name: "Amit", age: 25 });
   usersTable.insert({ id: 3, name: "Mohan", age: 28 });
   usersTable.insert({ id: 4, name: "Rahul", age: 27 });
+  usersTable.insert({ id: 5, name: "Paras", age: 35 });
   console.table(usersTable.findAll());
 
   console.log("\nTable Indexes:");
   console.table(usersTable.getIndexes());
 
   console.log("\nUpdate:");
-  usersTable.update("name", "Paras", "John");
+  usersTable.update("name", "Amit", "John");
   console.table(usersTable.findAll());
 
   console.log("\nTable Indexes:");
