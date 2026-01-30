@@ -5,6 +5,8 @@ import { IRateLimiter } from "./IRateLimiter";
 export class SlidingWindowLog extends IRateLimiter {
   private rateLimitConfig: RateLimitConfig;
 
+  private requestLog: Map<string, number[]> = new Map(); // user id -> list of request time in order
+
   private locks = new Map(); // key -> Mutex
 
   constructor(rateLimitConfig: RateLimitConfig) {
@@ -20,8 +22,24 @@ export class SlidingWindowLog extends IRateLimiter {
     await lock.acquire();
 
     try {
-      // TODO: Implement
-      return true;
+      // first request
+      if (!this.requestLog.has(userId)) {
+        this.requestLog.set(userId, []);
+      }
+
+      // clear expired requests from left side
+      const requestLog = this.requestLog.get(userId) || [];
+      while (requestLog.length && Date.now() - requestLog[0] >= this.rateLimitConfig.getWindowSizeInSecs() * 1000) {
+        requestLog.shift();
+      }
+
+      if (requestLog.length < this.rateLimitConfig.getMaxRequests()) {
+        requestLog.push(Date.now()); // record this request
+        this.requestLog.set(userId, requestLog);
+        return true;
+      }
+
+      return false;
     } finally {
       lock.release();
     }

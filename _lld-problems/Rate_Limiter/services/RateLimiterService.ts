@@ -14,7 +14,7 @@ export class RateLimiterService {
     );
     this.rateLimiters.set(
       UserTier.PREMIUM,
-      RateLimiterFactory.createRateLimiter(RateLimitType.FIXED_WINDOW, new RateLimitConfig(7, 10)), // 7 requests in 10 seconds
+      RateLimiterFactory.createRateLimiter(RateLimitType.TOKEN_BUCKET, new RateLimitConfig(7, 10)), // 7 requests in 10 seconds
     );
   }
 
