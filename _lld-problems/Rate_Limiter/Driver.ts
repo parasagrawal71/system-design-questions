@@ -16,7 +16,7 @@ import { RateLimiterService } from "./services/RateLimiterService";
   }
 
   console.log(`\n=== Premium User Requests ===`);
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 1; i <= 15; i++) {
     const allowed = await rateLimiterService.allowRequest(premiumUser);
     console.log(`Request ${i} for premium user: ${allowed ? "Allowed" : "Blocked"}`);
     await sleep(1000);

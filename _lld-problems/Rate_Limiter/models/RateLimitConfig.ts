@@ -12,7 +12,7 @@ export class RateLimitConfig {
     return this.maxRequests;
   }
 
-  getWindowInSeconds(): number {
+  getWindowSizeInSecs(): number {
     return this.windowSizeInSecs;
   }
 
