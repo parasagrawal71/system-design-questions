@@ -4,11 +4,23 @@ export class Column {
   private name: string;
   private type: ColumnType;
   private required: boolean;
+  private indexed: boolean;
 
-  constructor({ name, type, required = false }: { name: string; type: ColumnType; required?: boolean }) {
+  constructor({
+    name,
+    type,
+    required = false,
+    indexed = false,
+  }: {
+    name: string;
+    type: ColumnType;
+    required?: boolean;
+    indexed?: boolean;
+  }) {
     this.name = name;
     this.type = type;
     this.required = required;
+    this.indexed = indexed;
   }
 
   validate(value: unknown) {
@@ -16,7 +28,7 @@ export class Column {
       if (this.required) {
         throw new Error(`Column '${this.name}' is required`);
       }
-      return;
+      return; // Skip validation for undefined or null when not required
     }
 
     if (this.type === "STRING") {
@@ -32,6 +44,11 @@ export class Column {
     }
   }
 
+  isIndexed() {
+    return this.indexed;
+  }
+
+  // Getters
   getName() {
     return this.name;
   }
