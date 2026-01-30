@@ -2,6 +2,10 @@ import { Mutex } from "async-mutex";
 import { RateLimitConfig } from "../models/RateLimitConfig";
 import { IRateLimiter } from "./IRateLimiter";
 
+/*
+  ✅ Fixed Window Counter (Rolling / Anchored to first request of user)
+  ❌ Fixed Window Counter (Wall-clock aligned)
+*/
 export class FixedWindow extends IRateLimiter {
   private rateLimitConfig: RateLimitConfig;
 
