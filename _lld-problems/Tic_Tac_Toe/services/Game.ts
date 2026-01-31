@@ -1,9 +1,9 @@
 import * as rl from "readline-sync";
+import { PIECE_TYPE } from "../enums/enums";
 import { Board } from "../models/Board";
 import { Player } from "../models/Player";
 import { PlayingPieceO } from "../models/PlayingPieceO";
 import { PlayingPieceX } from "../models/PlayingPieceX";
-import { PIECE_TYPE } from "../constants/constants";
 
 export class Game {
   private _players: Player[] = [];

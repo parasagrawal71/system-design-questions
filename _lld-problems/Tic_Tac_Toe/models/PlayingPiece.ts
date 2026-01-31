@@ -1,4 +1,4 @@
-import { PIECE_TYPE } from "../constants/constants";
+import { PIECE_TYPE } from "../enums/enums";
 
 export class PlayingPiece {
   private _pieceType: PIECE_TYPE;
