@@ -1,0 +1,6 @@
+export enum RideStatus {
+  CREATED = "CREATED",
+  INPROGRESS = "INPROGRESS",
+  COMPLETED = "COMPLETED",
+  CANCELLED = "CANCELLED",
+}
